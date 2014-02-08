@@ -1,0 +1,60 @@
+@farge-sochi-lys: rgba(184, 4, 128, 1);
+@farge-sochi: rgba(150, 9, 120, 1);
+@farge-sochi-mork: rgba(95, 9, 84, 1);
+@farge-tekst: white;
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: @farge-sochi-mork;
+  color: @farge-tekst;
+  font-family: Helvetica;
+  font-size: 100%;
+}
+
+#ol-ringer {
+  display: block;
+  margin: 1em auto 0;
+  width: 294px;
+}
+
+.full-bredde {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.plassering {
+  width: 33.333333%;
+  float: left;
+
+  position: relative;
+  left: 0;
+  right: 0;
+
+  height: 100%;
+}
+
+.deltagere {
+  position: absolute;
+  bottom: 0;
+
+  list-style-type: none;
+
+  width: 100%;
+  text-align: center;
+  padding: 0 0.5em;
+}
+
+.pall {
+  position: absolute;
+  bottom: 0;
+
+  rect {
+    fill: @farge-tekst;
+  }
+}
