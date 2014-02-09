@@ -1,7 +1,3 @@
-$ = function (id) {
-  return document.getElementById(id);
-}
-
 var Pall = Ractive.extend({
   template: $('template-pall').innerText
 });
@@ -33,8 +29,4 @@ function fikkTopplistenSortert (data) {
   setTimeout(function () {
     forste.animate("hoyde", '18', options);
   }, 400);
-}
-
-window.onerror = function () {
-  alert('Logg in med google-konton din!');
 }

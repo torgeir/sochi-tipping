@@ -1,3 +1,5 @@
+@import "fonts";
+
 @farge-sochi-lys: rgba(184, 4, 128, 1);
 @farge-sochi: rgba(150, 9, 120, 1);
 @farge-sochi-mork: rgba(95, 9, 84, 1);
@@ -8,10 +10,58 @@
 html, body {
   margin: 0;
   padding: 0;
-  background-color: @farge-sochi-mork;
+  background-color: @farge-sochi;
   color: @farge-tekst;
-  font-family: Helvetica;
+  font-family: Georgia;
   font-size: 100%;
+  text-transform: uppercase;
+}
+
+nav {
+  position: absolute;
+  top: 0;
+  left: 0.5em;
+  right: 0.5em;
+  z-index: 1;
+  display: block;
+
+  padding-bottom: 1em;
+}
+
+#meny {
+  padding: 1em 0.5em;
+  float: right;
+
+  .fa-icon(@fa-var-bars);
+  text-decoration: none;
+  cursor: pointer;
+  color: @farge-sochi-mork;
+
+  &:hover {
+    color: @farge-sochi-lys;
+  }
+
+  &.meny--apen {
+    color: @farge-tekst;
+  }
+}
+
+.meny-liste {
+  margin-top: 2em;
+  background-color: @farge-tekst;
+  padding: 1em;
+}
+
+a,
+a:visited {
+  display: block;
+  padding: 1em;
+  color: @farge-sochi-mork;
+  text-decoration: none;
+}
+
+a:hover {
+  color: @farge-sochi-lys;
 }
 
 #ol-ringer {
@@ -20,41 +70,14 @@ html, body {
   width: 294px;
 }
 
-.full-bredde {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-
-.plassering {
-  width: 33.333333%;
-  float: left;
-
-  position: relative;
-  left: 0;
-  right: 0;
-
-  height: 100%;
-}
-
-.deltagere {
-  position: absolute;
-  bottom: 0;
-
-  list-style-type: none;
-
-  width: 100%;
+.score {
+  font-family: Georgia;
+  font-size: 1.5em;
+  line-height: 1.5em;
+  font-weight: bold;
   text-align: center;
-  padding: 0 0.5em;
+  color: @farge-sochi-mork;
 }
 
-.pall {
-  position: absolute;
-  bottom: 0;
-
-  rect {
-    fill: @farge-tekst;
-  }
-}
+@import "side-index";
+@import "side-topplisten";

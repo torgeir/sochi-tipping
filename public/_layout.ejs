@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<meta charset=utf-8>
+<title>Sochi</title>
+<link rel="stylesheet" href="sochi.css"></link>
+<meta name="viewport" content="width=device-width">
+
+<nav id="nav"></nav>
+
+<script type="text/template" id="template-meny">
+<a id="meny"
+   class="{{#apen}}meny--apen{{/apen}}"
+   on-click="vis"></a>
+  &nbsp;
+  {{#apen}}
+    <ul class="meny-liste">
+      <li><a href="/">Pallen</a></li>
+      <li><a href="/topplisten.html">Topplisten</a></li>
+    </ul>
+  {{/apen}}
+</script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/ractive.js/0.3.7/ractive.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/snap.svg/0.1.0/snap.svg-min.js"></script>
+
+<script>
+$ = function (id) {
+  return document.getElementById(id);
+};
+</script>
+
+<script src="ol-ringer.js"></script>
+<script src="toppliste-sortert.js"></script>
+<script src="meny.js"></script>
+
+<%- yield %>

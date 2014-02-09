@@ -1,0 +1,40 @@
+.full-bredde {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.plassering {
+  width: 33.333333%;
+  float: left;
+
+  position: relative;
+  left: 0;
+  right: 0;
+
+  height: 100%;
+
+  .deltagere {
+    position: absolute;
+    bottom: 0;
+
+    list-style-type: none;
+
+    width: 100%;
+    text-align: center;
+    padding: 0 0.5em;
+  }
+
+  .pall {
+    position: absolute;
+    bottom: 0;
+
+    rect {
+      fill: @farge-tekst;
+    }
+  }
+}
+
