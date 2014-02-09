@@ -7,7 +7,7 @@
 <script type="text/template" id="template-pall">
   <ul class="deltagere" style="bottom: {{hoyde}}%;">
     {{#deltagere}}
-      <li>{{navn}}</li>
+      <li class="deltager">{{navn}}</li>
     {{/deltagere}}
     <li class="score">{{deltagere[0].score}}</li>
   </ul>
@@ -18,6 +18,11 @@
 
 <script src="side-index.js"></script>
 
+<script>
+function error () {
+  alert('Logg inn med google-kontoen din!');
+}
+</script>
 <script
-  onerror="alert('Logg inn med google-kontoen din!')"
+  onerror="error()"
   src="https://spreadsheets.google.com/feeds/cells/0Atb2K1aYEre6dEFpTlRCenI3WEFUcl9KMWVkb0l1Qmc/ocx/public/basic?alt=json-in-script&callback=fikkTopplistenSortert"></script>

@@ -1,9 +1,7 @@
-@import "fonts";
-
-@farge-sochi-lys: rgba(184, 4, 128, 1);
-@farge-sochi: rgba(150, 9, 120, 1);
-@farge-sochi-mork: rgba(95, 9, 84, 1);
-@farge-tekst: white;
+@import "_farger";
+@import "_fonts";
+@import "_side-index";
+@import "_side-topplisten";
 
 * { box-sizing: border-box; }
 
@@ -52,6 +50,18 @@ nav {
   padding: 1em;
 }
 
+.meny-ikon {
+  margin-right: 0.5em;
+}
+
+.meny-ikon--pallen {
+  .fa-icon(@fa-var-trophy);
+}
+
+.meny-ikon--topplisten {
+  .fa-icon(@fa-var-list);
+}
+
 a,
 a:visited {
   display: block;
@@ -79,5 +89,3 @@ a:hover {
   color: @farge-sochi-mork;
 }
 
-@import "side-index";
-@import "side-topplisten";
