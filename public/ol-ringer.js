@@ -5,6 +5,9 @@ var r = 40;
 var snap = Snap(x * 3 + pad * 2, x * 1.5 + pad * 2);
 
 snap.node.id = "ol-ringer";
+snap.node.onclick = function () {
+  location.href = 'index.html';
+};
 
 var r1 = snap.circle(pad + x / 2,   pad + x / 2, r);
 var r2 = snap.circle(pad + x * 1.5, pad + x / 2, r);
