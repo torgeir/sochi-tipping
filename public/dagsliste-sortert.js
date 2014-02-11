@@ -1,5 +1,24 @@
-function TopplisteSortert (data) {
+function DagslisteSortert(data, dag) {
   var celler = data.feed.entry;
+
+  function getCellRef(celle){
+    var tittel = celle.title.$t;
+    var kolonne = /[A-Z]/.exec([tittel])[0];
+    var rad = /[0-9]/.exec([tittel])[0];
+    return {'rad' :rad, 'kolonne':kolonne};
+  }
+
+
+  var personer[];
+  for (var i = 0 ; i< celler.length; i++){
+    var celle = celler[i];
+
+    if (getCellRef(celle).kolonne > 'C', getCellRef(celle).rad == 1){
+      personer.push({'navn': celle.content.$t});
+    }
+
+  }
+
 
 
   var flateSvar = _.chain(celler)
