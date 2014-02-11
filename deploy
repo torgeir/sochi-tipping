@@ -1,1 +1,1 @@
-harp compile public target && scp -r target/* wa.gd:~/public/sochi/
+harp compile public target && scp -r target/* wa.gd:~/public/sochi/ && rm -r target
