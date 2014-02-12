@@ -23,6 +23,8 @@
   {{/apen}}
 </script>
 
+<script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/0.6.11/fastclick.min.js"></script>
+
 <script src="ractive.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.1.0/snap.svg-min.js"></script>
@@ -52,4 +54,7 @@ function error () {
 
   ga('create', 'UA-45118411-2', 'wa.gd');
   ga('send', 'pageview');
+  window.addEventListener('load', function () {
+    FastClick.attach(document.body);
+  }, false);
 </script>
