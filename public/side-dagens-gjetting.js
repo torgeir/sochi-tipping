@@ -5,35 +5,25 @@ var Dagens = Ractive.extend({
 function fikkResultater (data) {
 
   var resultater = new Resultater(data);
-  
+
   var paginering = new DatoPaginering(new Date());
+
+  var harLocalstorage = ('localStorage' in window);
+  var valgtNavn = harLocalstorage && localStorage.getItem('valgtNavn') || undefined;
 
   var dagens = new Dagens({
     el: $('dagens-gjetting'),
     data: {
       dato: paginering.dato(),
       navn: resultater.navn,
-      valgtNavn: undefined
+      valgtNavn: valgtNavn
     }
   });
 
-  var harLocalstorage = ('localStorage' in window);
-
   dagens.observe('valgtNavn', function (navn) {
 
-    if (!navn) {
-      if (!harLocalstorage) {
-        return
-      }
-      else {
-        navn = localStorage.getItem("valgtNavn");
-        if (navn == null) {
-          return;
-        }
-        else {
-          this.set('valgtNavn', navn);
-        }
-      }
+    if(!navn) {
+      return 
     }
 
     if (harLocalstorage) {
