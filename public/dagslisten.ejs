@@ -1,9 +1,11 @@
 <div id="poeng"></div>
 
 <script type="text/template" id="template-poeng">
-    <!--<a href="#" on-click="bakover">bakover</a> -->
-    <h2>{{dato}}</h2>
-    <!--<a href="#" on-click="framover">framover</a>-->
+  <h2>
+    <a href="#" on-click="bakover"  class="paginering paginering--forrige"></a>
+    {{datoFormatert}}
+    <a href="#" on-click="framover" class="paginering paginering--neste"></a>
+  </h2>
     <table class="deltagere">
         {{#deltagere}}
         <tr>

@@ -1,7 +1,11 @@
 <div id="dagens-gjetting"></div>
 
 <script type="text/template" id="template-dagens-gjetting">
-  <h2>{{dato}}</h2>
+  <h2>
+    <a href="#" on-click="bakover"  class="paginering paginering--forrige"></a>
+    {{datoFormatert}}
+    <a href="#" on-click="framover" class="paginering paginering--neste"></a>
+  </h2>
 
   <select value="{{valgtNavn}}">
     <option selected disabled>

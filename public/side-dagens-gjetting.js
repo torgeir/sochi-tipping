@@ -6,14 +6,12 @@ function fikkResultater (data) {
 
   var resultater = new Resultater(data);
   
-  var idag = new Date();
-  var formatertDato = idag.getDate() + "/" + (idag.getMonth() + 1);
+  var paginering = new DatoPaginering(new Date());
 
   var dagens = new Dagens({
     el: $('dagens-gjetting'),
     data: {
-      dag: idag.getDate(),
-      dato: formatertDato,
+      dato: paginering.dato(),
       navn: resultater.navn,
       valgtNavn: undefined
     }
@@ -42,9 +40,23 @@ function fikkResultater (data) {
       localStorage.setItem("valgtNavn", navn)
     }
 
-    var dag = this.get('dag');
-    var valg = resultater.poengFor(navn, dag);
+    var valg = resultater.poengFor(navn, paginering.dato());
     this.set('valg', valg); 
   }); 
+
+  dagens.on('bakover', function () {
+    this.set('dato', paginering.forrige());
+  });
+
+  dagens.on('framover', function () {
+    this.set('dato', paginering.neste());
+  });
+
+  dagens.observe('dato', function () {
+    var valg = resultater.poengFor(this.get('valgtNavn'), paginering.dato());
+    this.set('valg', valg)
+    this.set('datoFormatert', paginering.datoFormatert());
+  })
+
 }
 

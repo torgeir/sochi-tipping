@@ -6,28 +6,27 @@ function fikkResultater (data) {
 
   var resultater = new Resultater(data);
 
-  var idag = new Date();
-
-  var dagIMåneden = idag.getDate();
-  var formatertDato = idag.getDate() + "/" + (idag.getMonth() + 1);
-
-  var dagensResultater = resultater.poengForDag(dagIMåneden);
-
+  var paginering = new DatoPaginering(new Date());
 
   var poeng = new Poeng({
     el: $('poeng'),
     data: {
-      dato : formatertDato,
-      deltagere: _.flatten(dagensResultater)
+      dato: paginering.dato(),
     }
   });
 
-  poeng.on( 'bakover', function ( event ) {
-    idag.setDate(idag.getDate()-1);
+  poeng.on('bakover', function () {
+    this.set('dato', paginering.forrige());
   });
 
-  poeng.on( 'framover', function ( event ) {
-    idag.setDate(idag.getDate()+1);
+  poeng.on('framover', function () {
+    this.set('dato', paginering.neste());
   });
+
+  poeng.observe('dato', function () {
+    var dagensResultater = resultater.poengForDag(paginering.dato());
+    this.set('deltagere', _.flatten(dagensResultater));
+    this.set('datoFormatert', paginering.datoFormatert());
+  })
 }
 

@@ -49,8 +49,9 @@ function Resultater (data) {
   this.ovelser = _.groupBy(ovelser, "dato");
 }
 
-Resultater.prototype.poengFor = function (navn, dag) {
+Resultater.prototype.poengFor = function (navn, dato) {
   var self = this,
+      dag = dato.getDate(),
       dagensOvelser = this.ovelser[dag];
 
   return _.map(dagensOvelser, function (ovelsePåDato) {
@@ -64,9 +65,10 @@ Resultater.prototype.poengFor = function (navn, dag) {
   });
 };
 
-Resultater.prototype.poengForDag = function (dag) {
+Resultater.prototype.poengForDag = function (dato) {
   var self = this,
     pos,
+    dag = dato.getDate(),
     dagensOvelser = this.ovelser[dag];
 
   return _.chain(this.navn)

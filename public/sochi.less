@@ -1,8 +1,5 @@
 @import "_farger";
 @import "_fonts";
-@import "_side-index";
-@import "_side-topplisten";
-@import "_side-dagens-gjetting";
 
 * { box-sizing: border-box; }
 
@@ -64,6 +61,10 @@ nav {
   .fa-icon(@fa-var-list);
 }
 
+.meny-ikon--dagslisten {
+  .fa-icon(@fa-var-list-ol);
+}
+
 .meny-ikon--dagens-gjetting {
   .fa-icon(@fa-var-pencil-square-o);
 }
@@ -94,3 +95,8 @@ a:hover {
   text-align: center;
   color: @farge-sochi-mork;
 }
+
+@import "_paginering";
+@import "_side-index";
+@import "_side-topplisten";
+@import "_side-dagens-gjetting";
