@@ -64,20 +64,22 @@ Resultater.prototype.poengFor = function (navn, dag) {
   });
 };
 
-Resultater.prototype.poengForDag = function ( dag) {
+Resultater.prototype.poengForDag = function (dag) {
   var self = this,
     pos,
     dagensOvelser = this.ovelser[dag];
 
-  return _.map(this.navn, function(etNavn){
-    pos = self.navn.indexOf(etNavn);
+  return _.chain(this.navn)
+    .map(function (etNavn) {
+      pos = self.navn.indexOf(etNavn);
 
-    return {
-      navn: etNavn,
-      score : _.reduce(dagensOvelser, function(memo, ovelse){
-        return memo + parseInt(ovelse.poeng[pos]);
-      }, 0)
-
-    }
-  });
+      return {
+        navn: etNavn,
+        score: _.reduce(dagensOvelser, function (memo, ovelse) {
+          return memo + parseInt(ovelse.poeng[pos]);
+        }, 0)
+      };
+    })
+    .sortBy("score")
+    .value();
 };
