@@ -1,6 +1,7 @@
 function TopplisteSortert (data) {
   var celler = data.feed.entry;
 
+
   var flateSvar = _.chain(celler)
     .map(function (celle) {
       return celle.content.$t;

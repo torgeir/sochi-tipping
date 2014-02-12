@@ -1,0 +1,18 @@
+<div id="poeng"></div>
+
+<script type="text/template" id="template-poeng">
+    <!--<a href="#" on-click="bakover">bakover</a> -->
+    <h2>{{dato}}</h2>
+    <!--<a href="#" on-click="framover">framover</a>-->
+    <table class="deltagere">
+        {{#deltagere}}
+        <tr>
+            <td class="score">{{score}}</td><td>{{navn}}</td>
+        </tr>
+        {{/deltagere}}
+    </table>
+</script>
+
+<script src="side-dagslisten.js"></script>
+
+<script type="text/javascript" src="https://spreadsheets.google.com/feeds/cells/0Atb2K1aYEre6dEFpTlRCenI3WEFUcl9KMWVkb0l1Qmc/odb/public/basic?alt=json-in-script&callback=fikkResultater"></script>
