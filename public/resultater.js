@@ -6,7 +6,6 @@ function Resultater (data) {
   })
   .value();
   
-  var rader        = 72;
   var celler       = heleTabellen.length;
   var cellerPerRad = Math.ceil(celler/72);
 
@@ -34,10 +33,16 @@ function Resultater (data) {
       return i % 2 != 0;
     });
 
+
+    var poengMedDiff = _.reject(poeng, function (poeng, i) {
+      return i % 2 == 0;
+    });
+
     return {
       dato: dato,
       ovelse: ovelse,
-      poeng: poengUtenDiff
+      poeng: poengMedDiff,
+      tippet: poengUtenDiff
     };
   });
 
@@ -53,7 +58,26 @@ Resultater.prototype.poengFor = function (navn, dag) {
 
     return {
       ovelse: ovelsePåDato.ovelse,
+      tippet: ovelsePåDato.tippet[index],
       poeng: ovelsePåDato.poeng[index]
     };
+  });
+};
+
+Resultater.prototype.poengForDag = function ( dag) {
+  var self = this,
+    pos,
+    dagensOvelser = this.ovelser[dag];
+
+  return _.map(this.navn, function(etNavn){
+    pos = self.navn.indexOf(etNavn);
+
+    return {
+      navn: etNavn,
+      score : _.reduce(dagensOvelser, function(memo, ovelse){
+        return memo + parseInt(ovelse.poeng[pos]);
+      }, 0)
+
+    }
   });
 };

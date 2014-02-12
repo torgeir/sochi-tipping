@@ -4,13 +4,30 @@ var Poeng = Ractive.extend({
 
 function fikkResultater (data) {
 
-  var toppliste = new DagslisteSortert(data, '9');
+  var resultater = new Resultater(data);
+
+  var idag = new Date();
+
+  var dagIMåneden = idag.getDate();
+  var formatertDato = idag.getDate() + "/" + (idag.getMonth() + 1);
+
+  var dagensResultater = resultater.poengForDag(dagIMåneden);
+
 
   var poeng = new Poeng({
     el: $('poeng'),
     data: {
-      deltagere: _.flatten(toppliste.pallen.concat(toppliste.resten))
+      dato : formatertDato,
+      deltagere: _.flatten(dagensResultater)
     }
+  });
+
+  poeng.on( 'bakover', function ( event ) {
+    idag.setDate(idag.getDate()-1);
+  });
+
+  poeng.on( 'framover', function ( event ) {
+    idag.setDate(idag.getDate()+1);
   });
 }
 
