@@ -27,6 +27,7 @@ function Resultater (data) {
   var ovelser = _.map(rader, function (rad) {
     var dato   = rad[0],
         ovelse = rad[1],
+        resultat = rad[2],
         poeng  = _.rest(rad, 3); // fasit
 
     var poengUtenDiff = _.reject(poeng, function (poeng, i) {
@@ -41,6 +42,7 @@ function Resultater (data) {
     return {
       dato: dato,
       ovelse: ovelse,
+      resultat: resultat,
       poeng: poengMedDiff,
       tippet: poengUtenDiff
     };
@@ -56,11 +58,11 @@ Resultater.prototype.poengFor = function (navn, dato) {
 
   return _.map(dagensOvelser, function (ovelsePåDato) {
     var index = self.navn.indexOf(navn);
-
     return {
       ovelse: ovelsePåDato.ovelse,
       tippet: ovelsePåDato.tippet[index],
-      poeng: ovelsePåDato.poeng[index]
+      poeng: ovelsePåDato.poeng[index],
+      resultat: ovelsePåDato.resultat
     };
   });
 };
