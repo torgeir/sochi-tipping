@@ -23,10 +23,10 @@ ringer.attr({
   fill: "transparent"
 });
 
-setTimeout(function() {
-	r1.animate({r: rEnd}, 1000, mina.easeinout);
-	r2.animate({r: rEnd}, 1000, mina.easeinout);
-	r3.animate({r: rEnd}, 1000, mina.easeinout);
-	r4.animate({r: rEnd}, 1000, mina.easeinout);
-	r5.animate({r: rEnd}, 1000, mina.easeinout);
+setTimeout(function () {
+	r1.animate({r: rEnd}, 500, mina.easeinout);
+	r2.animate({r: rEnd}, 500, mina.easeinout);
+	r3.animate({r: rEnd}, 500, mina.easeinout);
+	r4.animate({r: rEnd}, 500, mina.easeinout);
+	r5.animate({r: rEnd}, 500, mina.easeinout);
 }, 750);
