@@ -1,0 +1,30 @@
+<div id="medaljene"></div>
+
+<script type="text/template" id="template-medaljene">
+
+  <select value="{{valgtNavn}}">
+    <option selected disabled>
+      Velg navn
+    </option>
+    {{#navn}}
+      <option value="{{.}}">{{.}}</option>
+    {{/navn}}
+  </select>
+
+  {{#valgtNavn}}
+  <table>
+    {{#valg}}
+      <tr>
+        <td><span class="ikon--{{ovelse}}"></span>  {{ovelse}}: {{resultat}}</td>
+        <td class="score"> {{tippet}} ({{poeng}})</td>
+      </tr>
+    {{/valg}}
+  </table>
+  {{/valgtNavn}}
+</script>
+
+<script src="side-medaljene.js"></script>
+
+<script
+  onerror="error"
+  src="https://spreadsheets.google.com/feeds/cells/0Atb2K1aYEre6dEFpTlRCenI3WEFUcl9KMWVkb0l1Qmc/odb/public/basic?alt=json-in-script&callback=fikkResultater"></script>
