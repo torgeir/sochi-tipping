@@ -87,3 +87,56 @@ Resultater.prototype.poengForDag = function (dato) {
     .sortBy("score")
     .value();
 };
+
+Resultater.prototype.poengDagForDag = function() {
+  var self = this,
+    poengListe = {},
+    navn = "";
+
+  for (var i = 8; i <= 24; ++i) {
+    var dato = new Date(2014, 2, i);
+    var poengForDato = self.poengForDag(dato);
+
+    for (var j = 0; j < poengForDato.length; ++j) {
+      navn = poengForDato[j].navn;
+      if (!poengListe[navn]) {
+        poengListe[navn] = {
+          poengTotalt: 0,
+          verdier: [],
+          chartData: {
+            labels: [],
+            datasets: [
+              {
+                fillColor : "rgba(220,220,220,0.5)",
+                strokeColor : "rgba(220,220,220,1)",
+                pointColor : "rgba(220,220,220,1)",
+                pointStrokeColor : "#fff",
+                data: []
+              }, 
+              {
+                fillColor : "rgba(151,187,205,0.5)",
+                strokeColor : "rgba(151,187,205,1)",
+                pointColor : "rgba(151,187,205,1)",
+                pointStrokeColor : "#fff",
+                data: []
+              }
+            ]
+          }
+        };
+      }
+
+      poengListe[navn].poengTotalt += poengForDato[j].score;
+      poengListe[navn].verdier[i-8] = {
+        dag: i,
+        poeng: poengListe[navn].poengTotalt,
+        plassering: j
+      };
+
+      poengListe[navn].chartData.labels.push(i);
+      poengListe[navn].chartData.datasets[0].data.push(poengListe[navn].poengTotalt);
+      poengListe[navn].chartData.datasets[1].data.push(j);
+    }
+  }
+
+  return poengListe;
+}
