@@ -1,0 +1,42 @@
+<div id="statistikk"></div>
+
+<script type="text/template" id="template-statistikk">
+  <select value="{{valgtNavn}}">
+    <option selected disabled>
+      Velg navn
+    </option>
+    {{#navn}}
+      <option value="{{.}}">{{.}}</option>
+    {{/navn}}
+  </select>
+
+
+  
+    <canvas id="chart" width="300" height="300"></canvas>
+  
+
+  {{#valgtNavn}}
+  <table>
+    <thead>
+      <tr>
+        <th>Dag</th>
+        <th>Plass</th>
+        <th>Poeng</th>
+      </tr>
+    </thead>
+    <tbody>
+    {{#valg}}
+      <tr>
+        <td>{{dag}}</td>
+        <td>{{plassering}}</td>
+        <td>{{poeng}}</td>
+      </tr>
+    {{/valg}}
+    </tbody>
+  </table>
+  {{/valgtNavn}}
+</script>
+
+<script src="side-statistikk.js"></script>
+<script type="text/javascript" src="chart.js"></script>
+<script type="text/javascript" src="https://spreadsheets.google.com/feeds/cells/0Atb2K1aYEre6dEFpTlRCenI3WEFUcl9KMWVkb0l1Qmc/odb/public/basic?alt=json-in-script&callback=fikkResultater"></script>
