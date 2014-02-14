@@ -102,6 +102,7 @@ Resultater.prototype.poengDagForDag = function() {
       if (!poengListe[navn]) {
         poengListe[navn] = {
           poengTotalt: 0,
+          sisteGjeldendePlassering: 0,
           verdier: [],
           chartData: {
             labels: [],
@@ -125,16 +126,22 @@ Resultater.prototype.poengDagForDag = function() {
         };
       }
 
+      if (i > new Date().getDate()) {
+        poengListe[navn].sisteGjeldendePlassering = 0;
+      } else {
+        poengListe[navn].sisteGjeldendePlassering = j+1;
+      }
+
       poengListe[navn].poengTotalt += poengForDato[j].score;
       poengListe[navn].verdier[i-8] = {
         dag: i,
         poeng: poengListe[navn].poengTotalt,
-        plassering: j
+        plassering: poengListe[navn].sisteGjeldendePlassering
       };
 
       poengListe[navn].chartData.labels.push(i);
       poengListe[navn].chartData.datasets[0].data.push(poengListe[navn].poengTotalt);
-      poengListe[navn].chartData.datasets[1].data.push(j);
+      poengListe[navn].chartData.datasets[1].data.push(poengListe[navn].sisteGjeldendePlassering);
     }
   }
 
