@@ -7,7 +7,7 @@ function Resultater (data) {
   .value();
   
   var celler       = heleTabellen.length;
-  var cellerPerRad = Math.ceil(celler/72);
+  var cellerPerRad = Math.ceil(celler/70);
 
   var innledendeOverskrifter = 3;
   var grupperteOverskrifter  = (cellerPerRad - innledendeOverskrifter)/2;
