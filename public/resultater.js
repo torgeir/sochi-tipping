@@ -130,16 +130,12 @@ Resultater.prototype.poengDagForDag = function() {
         };
       }
 
-      if (i > new Date().getDate()) {
-        poengListe[navn].sisteGjeldendePlassering = 0;
-      } else {
 
-        if (tmpPoeng != poengForDato[j].score){
-          tmpPlassering = j+1;
-        }
-        tmpPoeng = poengForDato[j].score;
-        poengListe[navn].sisteGjeldendePlassering = tmpPlassering;
+      if (tmpPoeng != poengForDato[j].score){
+        tmpPlassering = j+1;
       }
+      tmpPoeng = poengForDato[j].score;
+      poengListe[navn].sisteGjeldendePlassering = tmpPlassering;
 
       poengListe[navn].poengTotalt += poengForDato[j].score;
       poengListe[navn].maksPlassering = Math.max(poengListe[navn].sisteGjeldendePlassering, poengListe[navn].maksPlassering);
@@ -152,7 +148,11 @@ Resultater.prototype.poengDagForDag = function() {
 
       poengListe[navn].chartData.labels.push(i);
       poengListe[navn].chartData.datasets_Y1[0].data.push(poengListe[navn].poengTotalt);
-      poengListe[navn].chartData.datasets_Y2[0].data.push(poengListe[navn].sisteGjeldendePlassering);
+
+      if (i < new Date().getDate()) {
+        poengListe[navn].chartData.datasets_Y2[0].data.push(poengListe[navn].sisteGjeldendePlassering);
+      }
+
     }
   }
 
