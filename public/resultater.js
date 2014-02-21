@@ -97,6 +97,8 @@ Resultater.prototype.poengDagForDag = function() {
     var dato = new Date(2014, 2, i);
     var poengForDato = self.poengForDag(dato);
 
+    var tmpPlassering = 0;
+    var tmpPoeng = 0;
     for (var j = 0; j < poengForDato.length; ++j) {
       navn = poengForDato[j].navn;
       if (!poengListe[navn]) {
@@ -131,7 +133,12 @@ Resultater.prototype.poengDagForDag = function() {
       if (i > new Date().getDate()) {
         poengListe[navn].sisteGjeldendePlassering = 0;
       } else {
-        poengListe[navn].sisteGjeldendePlassering = j+1;
+
+        if (tmpPoeng != poengForDato[j].score){
+          tmpPlassering = j+1;
+        }
+        tmpPoeng = poengForDato[j].score;
+        poengListe[navn].sisteGjeldendePlassering = tmpPlassering;
       }
 
       poengListe[navn].poengTotalt += poengForDato[j].score;
