@@ -102,18 +102,20 @@ Resultater.prototype.poengDagForDag = function() {
       if (!poengListe[navn]) {
         poengListe[navn] = {
           poengTotalt: 0,
+          maksPlassering: 0,
           sisteGjeldendePlassering: 0,
           verdier: [],
           chartData: {
             labels: [],
-            datasets: [
+            datasets_Y1: [
               {
                 fillColor : "rgba(220,220,220,0.5)",
                 strokeColor : "rgba(220,220,220,1)",
                 pointColor : "rgba(220,220,220,1)",
                 pointStrokeColor : "#fff",
                 data: []
-              }, 
+              }],
+            datasets_Y2:[
               {
                 fillColor : "rgba(151,187,205,0.5)",
                 strokeColor : "rgba(151,187,205,1)",
@@ -133,6 +135,8 @@ Resultater.prototype.poengDagForDag = function() {
       }
 
       poengListe[navn].poengTotalt += poengForDato[j].score;
+      poengListe[navn].maksPlassering = Math.max(poengListe[navn].sisteGjeldendePlassering, poengListe[navn].maksPlassering);
+
       poengListe[navn].verdier[i-8] = {
         dag: i,
         poeng: poengListe[navn].poengTotalt,
@@ -140,8 +144,8 @@ Resultater.prototype.poengDagForDag = function() {
       };
 
       poengListe[navn].chartData.labels.push(i);
-      poengListe[navn].chartData.datasets[0].data.push(poengListe[navn].poengTotalt);
-      poengListe[navn].chartData.datasets[1].data.push(poengListe[navn].sisteGjeldendePlassering);
+      poengListe[navn].chartData.datasets_Y1[0].data.push(poengListe[navn].poengTotalt);
+      poengListe[navn].chartData.datasets_Y2[0].data.push(poengListe[navn].sisteGjeldendePlassering);
     }
   }
 

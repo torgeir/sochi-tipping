@@ -34,13 +34,20 @@ function fikkResultater (data) {
     var ctx = $('chart').getContext('2d');
     $('chart').width = window.innerWidth - 20;
     $('chart').height = window.innerWidth - 60;
-	var chart = new Chart(ctx).Line(valg.chartData, {
-		scaleFontColor: "#FFF",
-		scaleOverride : true,	
-		scaleSteps : (valg.poengTotalt / 10) + 1,
-		scaleStepWidth : 10,
-		scaleStartValue : 0
-	});
+
+
+    var chart = new Chart(ctx).LineDoubleY(valg.chartData, {
+      Y1_scaleFontColor: "#FFF",
+      Y1_scaleOverride : true,
+      Y1_scaleSteps : (valg.poengTotalt / 10) + 1,
+      Y1_scaleStepWidth : 10,
+      Y1_scaleStartValue : 0,
+      Y2_scaleFontColor: "#FFF",
+      Y2_scaleOverride : true,
+      Y2_scaleSteps : (valg.maksPlassering / 5) + 1,
+      Y2_scaleStepWidth : 5,
+      Y2_scaleStartValue : 0
+    });
 
     this.set('valg', valg.verdier); 
   }); 
