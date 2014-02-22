@@ -148,10 +148,8 @@ Resultater.prototype.poengDagForDag = function() {
 
       poengListe[navn].chartData.labels.push(i);
       poengListe[navn].chartData.datasets_Y1[0].data.push(poengListe[navn].poengTotalt);
+      poengListe[navn].chartData.datasets_Y2[0].data.push(poengListe[navn].sisteGjeldendePlassering);
 
-      if (i < new Date().getDate()) {
-        poengListe[navn].chartData.datasets_Y2[0].data.push(poengListe[navn].sisteGjeldendePlassering);
-      }
 
     }
   }
