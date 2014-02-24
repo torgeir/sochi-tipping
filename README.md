@@ -1,15 +1,18 @@
 # sochi-tipping
 
-Leaderboard for sochi-tippinga.
+A leaderboard showing our guesses for Norway's best positions in Sochi, using Harp, Snap.js and Ractive.js.
 
-## Installer
+http://public.wa.gd/sochi
+
+
+## Install
 
     npm install -g harp
     
-## Kjør
+## Run
 
     harp server public
     
-## Bygg
+## Build
 
     harp compile public www
